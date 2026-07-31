@@ -1,0 +1,23 @@
+name "mek3倍矿"
+--倍矿主路径
+every redstone pulse do
+    input item::*block from "粗矿存储" bottom side --抽粗矿块，使用大宗+压缩自动处理成粗矿块
+    output to "提纯" top side
+    forget
+    input from "提纯" bottom side
+    output to "倍矿临时缓存" top side --mek3倍矿的中间缓存，防止因直接处理块导致堵塞
+    forget
+    input from "倍矿临时缓存" bottom side
+    output to "粉碎" top side
+    forget
+    input from "粉碎" bottom side
+    output to "富集" top side
+    forget
+    input from "富集" bottom side
+    output to "存储" top side
+end
+--倍矿机器运行条件
+every redstone pulse do
+    input gas:: from "氧气存储" bottom side
+    output gas:: to each "提纯" top side
+end
