@@ -1,0 +1,18 @@
+name "敌对神经网络"
+every redstone pulse do
+    input item::empty_prediction from "预测矩阵" bottom side
+    output to "模拟室" slots 1 top side
+    forget
+    input item:: from "模拟室" bottom side slots 2
+    input item:: from "战利品制造机" bottom side 
+    output to "存储" top side
+end
+--附属版本
+--every redstone pulse do
+--    input item::empty_prediction from "预测矩阵" bottom side
+--    output to "终极模拟室" slots 1 top side
+--    forget
+--    input item:: from "终极模拟室" bottom side slots 2-5
+--    input item:: from "终极战利品制造机" bottom side
+--    output to "终极存储" top side
+--end
